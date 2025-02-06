@@ -5,7 +5,7 @@
 ### Steps to reproduce
 
 1. Add `AZURE_AD_AUTHORITY`, `AZURE_AD_CLIENT_ID` and `AZURE_AD_RESOURCE` to .env
-2. Make sure that http://localhost:3000 is added to the list of allowed redirect urls in azure
+2. Make sure that http://localhost:3000 is added to the list of allowed redirect urls in EntraID
 3. use `npm run build` to create Next.js production build
 4. use `npm run start` to start production build server
 5. Open application in browser ( verified with `Firefox@134.0.1` and `Chrome@132.0.6834.168`)
