@@ -64,7 +64,7 @@ msal.initialize()
             } else if(event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS && event.payload){
                 const {account} = event.payload as AuthenticationResult;
                 msal.setActiveAccount(account);
-                console.log('##### Acquired token successfully.', account);
+                console.log('##### Acquired token successfully. idToken exists:', account?.idToken !== undefined, 'idToken claims are present', account?.idTokenClaims !== undefined);
             }
         })
     });
