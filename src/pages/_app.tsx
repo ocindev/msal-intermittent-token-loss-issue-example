@@ -61,6 +61,10 @@ msal.initialize()
             if (event.eventType === EventType.LOGIN_SUCCESS && event.payload) {
                 const {account} = event.payload as AuthenticationResult;
                 msal.setActiveAccount(account);
+            } else if(event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS && event.payload){
+                const {account} = event.payload as AuthenticationResult;
+                msal.setActiveAccount(account);
+                console.log('##### Acquired token successfully.', account);
             }
         })
     });

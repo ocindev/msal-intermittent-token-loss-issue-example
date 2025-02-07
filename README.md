@@ -14,6 +14,8 @@
 8. (Only chrome): Open the developer tools and go to the Performance tab - enable 4x CPU slowdown 
 9. Press F5 to do a full reload
 10. The account data shown is missing the idToken and all of its claims
+11. Press the `Fetch token silently` button
+12. The logs show that the event payload itself is also missing the idToken
 
 
 ### Observations:

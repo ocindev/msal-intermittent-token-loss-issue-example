@@ -1,6 +1,7 @@
 import getConfig from "next/config";
 import {RedirectRequest} from "@azure/msal-browser";
 import {msal} from "@/pages/_app";
+import {AuthenticationResult} from "@azure/msal-common";
 
 
 export const msalRedirectRequest = (): RedirectRequest => {
@@ -26,6 +27,16 @@ export const handleMsalRedirectLogin = (): Promise<void> => {
 
     return msal.acquireTokenRedirect({
         ...msalRedirectRequest(),
+        account: account || undefined
+    });
+};
+
+export const handleMsalSilentLogin = (forceRefresh: boolean = false): Promise<AuthenticationResult> => {
+    const account = msal.getActiveAccount();
+
+    return msal.acquireTokenSilent({
+        ...msalRedirectRequest(),
+        forceRefresh: forceRefresh,
         account: account || undefined
     });
 };

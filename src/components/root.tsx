@@ -1,24 +1,24 @@
-import {useMsal} from "@azure/msal-react";
-import {handleLogout} from "@/auth/msal";
+import {useAccount} from "@azure/msal-react";
+import {handleLogout, handleMsalSilentLogin} from "@/auth/msal";
 
 
 export default function RootPage() {
-    const {accounts} = useMsal();
+    const account = useAccount();
 
-    if (accounts.length == 0) {
-        return <div>Error... not authenticated</div>
+    const handleFetchTokenSilently = async () => {
+        const result = await handleMsalSilentLogin();
+        console.log('##### Result of silent login', result);
     }
 
-    const account = accounts[0];
-
     return (
-        <div className="flex flex-col items-center gap-y-2">
+        <div className="items-center gap-y-2">
             <h2>Active Account</h2>
-            <div className="flex flex-col items-center gap-y-3">
+            <div className="justify-center">
                 <span>{JSON.stringify(account, null, 2)}</span>
             </div>
-            <div>
+            <div className="flex flex-col items-center gap-y-2">
                 <button className="btn btn-primary" onClick={() => handleLogout()}>Logout</button>
+                <button className="btn btn-primary" onClick={() => handleFetchTokenSilently()}>Fetch token silently</button>
             </div>
         </div>
     );

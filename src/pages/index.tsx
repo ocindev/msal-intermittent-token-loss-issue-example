@@ -1,4 +1,3 @@
-import {Inter} from "next/font/google";
 import {MsalAuthenticationTemplate, useMsal} from "@azure/msal-react";
 import {InteractionStatus, InteractionType} from "@azure/msal-browser";
 import {msalRedirectRequest} from "@/auth/msal";
@@ -16,7 +15,7 @@ function Home() {
         return <div>Loading... current status {inProgress}</div>;
     }
     return (
-        <main className="container mx-auto w-full flex">
+        <main className="container mx-auto w-full">
             <MsalAuthenticationTemplate
                 interactionType={InteractionType.Redirect}
                 authenticationRequest={redirectRequest}
